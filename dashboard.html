@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Interactivo: Estrategia de Transformación Digital para PyMEs</title>
+    <!-- Chosen Palette: Professional Corporate (#0A2F51, #0E4D64, #137177, #188977, #2D9A84) with an energetic accent (#FF9F1C) -->
+    <!-- Application Structure Plan: A tab-based SPA providing a non-linear exploration of the business plan. The structure is designed for different stakeholders (investors, partners, internal team). 1) Dashboard: A high-level overview with key KPIs to hook the user. 2) Mercado: A deep-dive into the market opportunity and SME challenges, using comparative charts. 3) Solución: Details the service offerings and implementation process using interactive cards and a process flow diagram. 4) Modelo: Outlines the business model, GTM strategy, and financial potential with trend charts and key metrics. This tabbed structure is superior to a long scroll for this dense, multi-faceted business information, allowing users to navigate directly to their area of interest. -->
+    <!-- Visualization & Content Choices: 
+        - Market Size/Impact (KPIs): Goal: Inform -> Viz: Large Stat Cards (HTML/CSS) -> Interaction: Hover effects -> Justification: Provides immediate, high-impact understanding of the scale.
+        - Digital Maturity Gap: Goal: Compare -> Viz: Donut Chart (Chart.js) -> Interaction: Tooltips -> Justification: Clearly shows a part-to-whole relationship (current vs. needed).
+        - AI Adoption vs. Maturity: Goal: Compare -> Viz: Bar Chart (Chart.js) -> Interaction: Tooltips -> Justification: Effectively compares two disparate values to highlight a key market inefficiency.
+        - SME Challenges: Goal: Organize/Rank -> Viz: Horizontal Bar Chart (Chart.js) -> Interaction: Tooltips -> Justification: Best for displaying and comparing items with long text labels.
+        - Service Offerings: Goal: Organize -> Viz: Icon-based Cards (HTML/CSS) -> Interaction: Hover effects -> Justification: Visually appealing and clean way to segment core services.
+        - Implementation Process: Goal: Organize/Show Process -> Viz: Flow Diagram (HTML/Flexbox) -> Interaction: Static visual -> Justification: Clearly illustrates a linear process without using prohibited libraries like SVG/Mermaid.
+        - Cloud Market Growth: Goal: Show Change -> Viz: Line Chart (Chart.js) -> Interaction: Tooltips -> Justification: Standard and most effective way to show a trend over time.
+        -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f0f4f8; }
+        .chart-container { position: relative; width: 100%; max-width: 600px; margin-left: auto; margin-right: auto; height: 350px; max-height: 400px; }
+        @media (max-width: 768px) { .chart-container { height: 300px; max-height: 350px; } }
+        .nav-link { transition: all 0.3s ease; }
+        .nav-link.active { color: #FF9F1C; border-bottom-color: #FF9F1C; }
+        .nav-link:not(.active) { border-bottom-color: transparent; }
+        .kpi-card { background-color: #0A2F51; color: white; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .kpi-card:hover { transform: translateY(-5px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.1); }
+        .content-section { display: none; }
+        .content-section.active { display: block; }
+        .accent-bg { background-color: #FF9F1C; }
+        .accent-text { color: #FF9F1C; }
+        .primary-bg { background-color: #0A2F51; }
+        .secondary-bg { background-color: #137177; }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <div class="min-h-screen">
+        <header class="primary-bg text-white shadow-lg">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-4">
+                <div class="flex flex-col sm:flex-row justify-between items-center">
+                    <div>
+                        <h1 class="text-2xl md:text-3xl font-extrabold">El Igualador Competitivo</h1>
+                        <p class="text-sm md:text-base text-gray-300">Dashboard Estratégico de Transformación Digital para PyMEs</p>
+                    </div>
+                    <nav class="mt-4 sm:mt-0" id="main-nav">
+                        <a href="#dashboard" class="nav-link text-lg font-semibold border-b-4 pb-1 px-3 active">Dashboard</a>
+                        <a href="#mercado" class="nav-link text-lg font-semibold border-b-4 pb-1 px-3">Mercado</a>
+                        <a href="#solucion" class="nav-link text-lg font-semibold border-b-4 pb-1 px-3">Solución</a>
+                        <a href="#modelo" class="nav-link text-lg font-semibold border-b-4 pb-1 px-3">Modelo</a>
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+        <main class="container mx-auto p-4 sm:p-6 lg:p-8">
+
+            <section id="dashboard" class="content-section active">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold mb-2">Resumen Ejecutivo Interactivo</h2>
+                    <p class="text-gray-600 max-w-3xl mx-auto">Una vista de 360 grados a la oportunidad de mercado, el potencial de crecimiento y el impacto de nuestra misión para cerrar la brecha digital en Latinoamérica.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="kpi-card rounded-lg p-6 text-center">
+                        <div class="text-5xl font-black accent-text">99.8%</div>
+                        <div class="mt-2 font-semibold">De las empresas en México son PyMEs</div>
+                    </div>
+                    <div class="kpi-card rounded-lg p-6 text-center">
+                        <div class="text-5xl font-black accent-text">72%</div>
+                        <div class="mt-2 font-semibold">Del empleo nacional generado por PyMEs</div>
+                    </div>
+                    <div class="kpi-card rounded-lg p-6 text-center">
+                        <div class="text-5xl font-black accent-text">$6.8B</div>
+                        <div class="mt-2 font-semibold">Mercado Cloud PyME (MX) Proyectado a 2025</div>
+                    </div>
+                    <div class="kpi-card rounded-lg p-6 text-center">
+                        <div class="text-5xl font-black accent-text">38%</div>
+                        <div class="mt-2 font-semibold">Crecimiento Potencial en Ingresos con IA Madura</div>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <h3 class="font-bold text-xl text-center mb-4">Brecha de Madurez Digital en México</h3>
+                        <p class="text-center text-sm text-gray-500 mb-4">El nivel de madurez actual (41.7%) está muy por debajo del 70% considerado ideal para competir globalmente. Esta brecha es nuestra área de acción.</p>
+                        <div class="chart-container" style="height: 300px; max-height: 300px;"><canvas id="maturityChart"></canvas></div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <h3 class="font-bold text-xl text-center mb-4">La Paradoja de la IA: Adopción vs. Madurez</h3>
+                        <p class="text-center text-sm text-gray-500 mb-4">Mientras que una mayoría (64%) de PyMEs ya experimenta con IA, solo un 1% ha logrado una implementación madura que genere valor tangible.</p>
+                        <div class="chart-container" style="height: 300px; max-height: 300px;"><canvas id="aiParadoxChart"></canvas></div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="mercado" class="content-section">
+                 <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold mb-2">Análisis de Oportunidad de Mercado</h2>
+                    <p class="text-gray-600 max-w-3xl mx-auto">Las PyMEs son el motor económico, pero enfrentan barreras significativas para su modernización. Comprender estos desafíos es clave para nuestra propuesta de valor.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="font-bold text-xl text-center mb-4">Principales Obstáculos para la Transformación Digital</h3>
+                    <p class="text-center text-sm text-gray-500 mb-4">Nuestra oferta de servicios está diseñada para abordar directamente estas barreras, proveyendo no solo tecnología, sino estrategia y talento.</p>
+                    <div class="chart-container"><canvas id="challengesChart"></canvas></div>
+                </div>
+            </section>
+
+            <section id="solucion" class="content-section">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold mb-2">Nuestra Solución Integral</h2>
+                    <p class="text-gray-600 max-w-3xl mx-auto">Proporcionamos un acompañamiento completo basado en el ecosistema de Google Cloud, con servicios modulares y escalables para generar impacto medible.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                    <div class="bg-white rounded-lg shadow-md p-6 text-center transition-transform transform hover:-translate-y-2">
+                        <div class="text-5xl mb-4">⚙️</div>
+                        <h3 class="text-xl font-bold mb-2">Automatización de Procesos con IA</h3>
+                        <p class="text-gray-600">Implementación de ERPs, CRMs y flujos de trabajo inteligentes para maximizar la eficiencia y reducir costos operativos.</p>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-md p-6 text-center transition-transform transform hover:-translate-y-2">
+                        <div class="text-5xl mb-4">💬</div>
+                        <h3 class="text-xl font-bold mb-2">Experiencia de Cliente (CX) y E-commerce</h3>
+                        <p class="text-gray-600">Uso de Gemini y Vertex AI para crear chatbots, personalizar interacciones y optimizar conversiones de venta en línea.</p>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-md p-6 text-center transition-transform transform hover:-translate-y-2">
+                        <div class="text-5xl mb-4">☁️</div>
+                        <h3 class="text-xl font-bold mb-2">Migración y Servicios Cloud</h3>
+                        <p class="text-gray-600">Diseño de infraestructura segura, escalable y costo-eficiente en Google Cloud y Firebase para una operación ágil.</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-8">
+                    <h3 class="font-bold text-xl text-center mb-6">Hoja de Ruta hacia la Transformación</h3>
+                    <div class="flex flex-col md:flex-row justify-between items-center text-center">
+                        <div class="flex-1">
+                            <div class="secondary-bg text-white rounded-full w-24 h-24 mx-auto flex items-center justify-center text-3xl font-bold">1</div>
+                            <h4 class="font-bold mt-2">Diagnóstico</h4>
+                            <p class="text-gray-600 text-sm">Evaluación de madurez digital y objetivos de negocio.</p>
+                        </div>
+                        <div class="w-16 h-1 bg-gray-300 my-4 md:my-0 md:w-full md:h-1"></div>
+                        <div class="flex-1">
+                            <div class="secondary-bg text-white rounded-full w-24 h-24 mx-auto flex items-center justify-center text-3xl font-bold">2</div>
+                            <h4 class="font-bold mt-2">Estrategia</h4>
+                            <p class="text-gray-600 text-sm">Diseño de un roadmap personalizado y priorizado.</p>
+                        </div>
+                        <div class="w-16 h-1 bg-gray-300 my-4 md:my-0 md:w-full md:h-1"></div>
+                        <div class="flex-1">
+                            <div class="secondary-bg text-white rounded-full w-24 h-24 mx-auto flex items-center justify-center text-3xl font-bold">3</div>
+                            <h4 class="font-bold mt-2">Implementación</h4>
+                            <p class="text-gray-600 text-sm">Ejecución ágil de proyectos con medición de KPIs.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="modelo" class="content-section">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold mb-2">Modelo de Negocio y Proyecciones</h2>
+                    <p class="text-gray-600 max-w-3xl mx-auto">Un modelo de ingresos escalable y recurrente, enfocado en un mercado con crecimiento exponencial y un claro retorno de inversión.</p>
+                </div>
+                 <div class="grid grid-cols-1 lg:grid-cols-5 gap-6">
+                    <div class="lg:col-span-3 bg-white rounded-lg shadow-md p-6">
+                        <h3 class="font-bold text-xl text-center mb-4">Crecimiento del Mercado Cloud para PyMEs (MX)</h3>
+                        <p class="text-center text-sm text-gray-500 mb-4">El mercado alcanzará los $6,843 millones de dólares en 2025, demostrando un entorno de inversión y adopción tecnológica altamente favorable.</p>
+                        <div class="chart-container"><canvas id="marketGrowthChart"></canvas></div>
+                    </div>
+                    <div class="lg:col-span-2 flex flex-col gap-6">
+                        <div class="bg-white rounded-lg shadow-md p-6 text-center flex-1 flex flex-col justify-center">
+                            <h4 class="font-bold text-lg">Modelo de Ingresos</h4>
+                            <p class="text-gray-600 mt-2">Modelos flexibles y accesibles (<span class="font-semibold">SaaS, Suscripción, Pay-as-you-go</span>) para reducir la barrera de entrada y crecer con nuestros clientes.</p>
+                        </div>
+                        <div class="accent-bg text-white rounded-lg shadow-lg p-6 text-center flex-1 flex flex-col justify-center">
+                             <div class="text-5xl font-black">+25%</div>
+                             <div class="mt-2 font-semibold">Aumento promedio en ventas reportado por PyMEs digitalizadas.</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <footer class="footer primary-bg text-white py-8 mt-12">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p>&copy; 2025 Opus Nova Soluciones. Todos los derechos reservados.</p>
+            <p>Contacto: Marco Antonio Mejia (CTO) - 55 1224-6324</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('.content-section');
+
+            const chartTooltipTitleCallback = (tooltipItems) => {
+                const item = tooltipItems[0];
+                let label = item.chart.data.labels[item.dataIndex];
+                return Array.isArray(label) ? label.join(' ') : label;
+            };
+
+            const commonChartOptions = {
+                maintainAspectRatio: false,
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: { font: { size: 12, family: 'Inter' } }
+                    },
+                    tooltip: {
+                        callbacks: { title: chartTooltipTitleCallback },
+                        bodyFont: { size: 12, family: 'Inter' },
+                        titleFont: { size: 14, family: 'Inter' },
+                        backgroundColor: '#0A2F51',
+                        padding: 10,
+                    }
+                },
+                scales: {
+                    x: { ticks: { font: { family: 'Inter' } } },
+                    y: { ticks: { font: { family: 'Inter' } } }
+                }
+            };
+            
+            const wrapLabel = (label, maxLength = 16) => {
+                if (label.length <= maxLength) return label;
+                const words = label.split(' ');
+                const lines = [];
+                let currentLine = '';
+                words.forEach(word => {
+                    if ((currentLine + ' ' + word).trim().length > maxLength) {
+                        lines.push(currentLine.trim());
+                        currentLine = word;
+                    } else {
+                        currentLine = (currentLine + ' ' + word).trim();
+                    }
+                });
+                lines.push(currentLine.trim());
+                return lines;
+            };
+
+            let charts = {};
+
+            const createMaturityChart = () => {
+                if (charts.maturity) charts.maturity.destroy();
+                const ctx = document.getElementById('maturityChart').getContext('2d');
+                charts.maturity = new Chart(ctx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Madurez Actual', 'Brecha Digital'],
+                        datasets: [{ data: [41.7, 58.3], backgroundColor: ['#188977', '#FF9F1C'], borderColor: '#f0f4f8', borderWidth: 4 }]
+                    },
+                    options: commonChartOptions
+                });
+            };
+
+            const createAiParadoxChart = () => {
+                if (charts.aiParadox) charts.aiParadox.destroy();
+                const ctx = document.getElementById('aiParadoxChart').getContext('2d');
+                charts.aiParadox = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Adopción de IA', 'Madurez en IA'],
+                        datasets: [{ data: [64, 1], backgroundColor: ['#137177', '#2D9A84'], barPercentage: 0.5 }]
+                    },
+                    options: { ...commonChartOptions, plugins: {...commonChartOptions.plugins, legend: { display: false } }, scales: { y: { beginAtZero: true, ticks: { callback: (value) => value + '%' } } } }
+                });
+            };
+            
+            const createChallengesChart = () => {
+                if (charts.challenges) charts.challenges.destroy();
+                const ctx = document.getElementById('challengesChart').getContext('2d');
+                charts.challenges = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Falta de Talento y Habilidades', 'Cultura y Resistencia al Cambio', 'Escasez de Recursos Financieros', 'Ciberseguridad y Riesgos'].map(l => wrapLabel(l, 25)),
+                        datasets: [{ data: [85, 75, 60, 50], backgroundColor: ['#0E4D64', '#137177', '#188977', '#2D9A84'] }]
+                    },
+                    options: { ...commonChartOptions, indexAxis: 'y', plugins: {...commonChartOptions.plugins, legend: { display: false }}, scales: { x: { beginAtZero: true } } }
+                });
+            };
+            
+            const createMarketGrowthChart = () => {
+                 if (charts.marketGrowth) charts.marketGrowth.destroy();
+                 const ctx = document.getElementById('marketGrowthChart').getContext('2d');
+                 charts.marketGrowth = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: ['2022', '2023', '2024', '2025'],
+                        datasets: [{ label: 'Mercado Cloud (Miles de Millones USD)', data: [3.5, 4.8, 5.9, 6.84], borderColor: '#FF9F1C', borderWidth: 3, fill: true, backgroundColor: 'rgba(255, 159, 28, 0.2)', tension: 0.4 }]
+                    },
+                    options: { ...commonChartOptions, plugins: {...commonChartOptions.plugins, legend: { display: true } } }
+                 });
+            };
+
+            const activateTab = (hash) => {
+                const targetId = hash.substring(1);
+                
+                navLinks.forEach(link => {
+                    link.classList.toggle('active', link.hash === hash);
+                });
+                
+                sections.forEach(section => {
+                    section.classList.toggle('active', section.id === targetId);
+                });
+
+                if (targetId === 'dashboard') {
+                    createMaturityChart();
+                    createAiParadoxChart();
+                } else if (targetId === 'mercado') {
+                    createChallengesChart();
+                } else if (targetId === 'modelo') {
+                    createMarketGrowthChart();
+                }
+            };
+
+            document.getElementById('main-nav').addEventListener('click', (e) => {
+                if (e.target.classList.contains('nav-link')) {
+                    e.preventDefault();
+                    window.location.hash = e.target.hash;
+                }
+            });
+            
+            window.addEventListener('hashchange', () => {
+                 const hash = window.location.hash || '#dashboard';
+                 activateTab(hash);
+            });
+            
+            const initialHash = window.location.hash || '#dashboard';
+            activateTab(initialHash);
+        });
+    </script>
+</body>
+</html>

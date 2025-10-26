@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Metadatos Fundamentales para SEO -->
+    <title>Quiénes Somos | Opus Nova Soluciones | Consultoría en IA y Google Cloud</title>
+    <meta name="description" content="Conoce a Opus Nova Soluciones, tu socio estratégico en la adopción de Inteligencia Artificial y tecnologías de Google Cloud para PyMEs en México y LATAM.">
+    <link rel="canonical" href="https://www.opusnovasoluciones.com/quienes-somos.html">
+    <meta name="robots" content="index, follow">
+
+    <!-- Datos Estructurados JSON-LD (según GEMINI.md) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Opus Nova Soluciones",
+      "url": "https://www.opusnovasoluciones.com",
+      "logo": "https://storage.googleapis.com/opus-nova-assets/logo.png",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+525500000000",
+        "contactType": "customer service"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/company/opus-nova-soluciones"
+      ]
+    }
+    </script>
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="/css/main.css">
+
+    <!-- Scripts -->
+    <script src="/js/main.js" type="module" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        @media (max-width: 768px) {
+            .chart-container {
+                height: 300px;
+                max-height: 350px;
+            }
+        }
+        .kpi-card {
+            background-color: #0A2F51; /* Dark Blue from original dashboard */
+            color: white;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .kpi-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+        }
+        .content-section {
+            margin-bottom: 4rem;
+        }
+        .accent-text {
+            color: var(--color-primary);
+        }
+        .secondary-bg {
+            background-color: var(--color-secondary);
+        }
+        .grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+        .grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+        .md\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .md\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+        .lg\:grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+        .lg\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .lg\:grid-cols-5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+        .lg\:col-span-3 { grid-column: span 3 / span 3; }
+        .lg\:col-span-2 { grid-column: span 2 / span 2; }
+
+        .text-center { text-align: center; }
+        .mb-8 { margin-bottom: 2rem; }
+        .mb-4 { margin-bottom: 1rem; }
+        .mb-6 { margin-bottom: 1.5rem; }
+        .text-3xl { font-size: 1.875rem; line-height: 2.25rem; }
+        .text-5xl { font-size: 3rem; line-height: 1; }
+        .font-bold { font-weight: 700; }
+        .font-black { font-weight: 900; }
+        .font-semibold { font-weight: 600; }
+        .text-gray-600 { color: #4a5568; }
+        .max-w-3xl { max-width: 48rem; }
+        .mx-auto { margin-left: auto; margin-right: auto; }
+        .mt-2 { margin-top: 0.5rem; }
+        .mt-6 { margin-top: 1.5rem; }
+        .bg-white { background-color: #fff; }
+        .rounded-lg { border-radius: 0.5rem; }
+        .shadow-md { box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); }
+        .p-6 { padding: 1.5rem; }
+        .text-xl { font-size: 1.25rem; line-height: 1.75rem; }
+        .text-sm { font-size: 0.875rem; line-height: 1.25rem; }
+        .text-gray-500 { color: #718096; }
+
+        .mission-vision-values-section {
+            padding: 4rem 0;
+        }
+        .mission-vision-values-section .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+        }
+        .mission-vision-values-section .card {
+            background-color: #fff;
+            border-radius: 0.5rem;
+            padding: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .mission-vision-values-section .card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--color-primary);
+        }
+        .mission-vision-values-section .card ul {
+            list-style-position: inside;
+            padding-left: 0;
+        }
+        .mission-vision-values-section .card li {
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container header__container">
+            <a href="index.html" class="header__logo">
+                Opus Nova Soluciones
+            </a>
+            <button class="header__toggle" aria-label="Abrir menú de navegación">
+                <span class="header__toggle-line"></span>
+                <span class="header__toggle-line"></span>
+                <span class="header__toggle-line"></span>
+            </button>
+            <nav class="header__nav">
+                <ul class="header__nav-list">
+                    <li class="header__nav-item"><a href="index.html" class="header__nav-link">Inicio</a></li>
+                    <li class="header__nav-item"><a href="quienes-somos.html" class="header__nav-link">Quiénes Somos</a></li>
+                    <li class="header__nav-item"><a href="servicios.html" class="header__nav-link">Servicios</a></li>
+                    <li class="header__nav-item"><a href="blog/blog.html" class="header__nav-link">Blog</a></li>
+                    <li class="header__nav-item"><a href="contactanos.html" class="header__nav-link header__nav-link--cta">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="about-us-section">
+            <div class="container">
+                <h1 class="about-us-section__title">Somos el Socio Estratégico para la Transformación Digital de tu PyME</h1>
+                <p class="about-us-section__description">
+                    Nacimos para ser el igualador competitivo de las pequeñas y medianas empresas en Latinoamérica.
+                    <br>
+                    Nuestra misión es cerrar la brecha de madurez digital, proveyendo no solo tecnología, sino la estrategia, el talento y el acompañamiento necesarios para implementar soluciones de <strong>Inteligencia Artificial</strong> y <strong>Google Cloud</strong> que generan un impacto medible y sostenible.
+                </p>
+            </div>
+        </section>
+
+        <section class="mission-vision-values-section">
+            <div class="container">
+                <h2 class="section-title">Nuestra Misión, Visión y Valores</h2>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="card">
+                        <h3>Nuestra Misión</h3>
+                        <p>Guiar a los líderes de PyMEs en México y Latinoamérica a través de la Gran Obra de la Transmutación Digital, proveyendo estrategias, conocimiento Gnosis y herramientas tecnológicas para convertir el potencial interno (la esencia) en crecimiento sostenible, rentabilidad y excelencia en el mercado global.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Nuestra Visión</h3>
+                        <p>Ser reconocidos como los Arquitectos de la Transformación Digital, la firma líder en Latinoamérica que construye la Magnum Opus Tech (Pieza Maestra Tecnológica) de sus clientes, elevando el espíritu de la PyME a un nuevo plano de eficiencia, trascendencia y propósito en la era digital.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Nuestros Valores</h3>
+                        <ul>
+                            <li><strong>Gnosis (Conocimiento Profundo):</strong> Aplicación de la sabiduría para crear soluciones digitales que realmente transformen y perduren.</li>
+                            <li><strong>Ars Perfecta (Arte de la Perfección):</strong> Búsqueda de la precisión y la excelencia en el diseño y la ejecución de cada proyecto, rechazando soluciones superficiales.</li>
+                            <li><strong>Transmutatio (Transformación con Propósito):</strong> Conversión del desafío (el "metal base") en valor superior (el "oro digital") mediante el cambio de mentalidad y la tecnología.</li>
+                            <li><strong>Liderazgo Ético:</strong> Operar con transparencia, integridad y un estricto código moral en cada interacción.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="container mx-auto p-4 sm:p-6 lg:p-8">
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Opus Nova Soluciones. Todos los derechos reservados.</p>
+            <p>Contacto: Marco Antonio Mejia (CTO) - 55 1224-6324</p>
+            <div class="social-media">
+                <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+            const chartTooltipTitleCallback = (tooltipItems) => {
+                const item = tooltipItems[0];
+                let label = item.chart.data.labels[item.dataIndex];
+                return Array.isArray(label) ? label.join(' ') : label;
+            };
+
+            const commonChartOptions = {
+                maintainAspectRatio: false,
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: { font: { size: 12, family: 'Inter' } }
+                    },
+                    tooltip: {
+                        callbacks: { title: chartTooltipTitleCallback },
+                        bodyFont: { size: 12, family: 'Inter' },
+                        titleFont: { size: 14, family: 'Inter' },
+                        backgroundColor: '#0A2F51',
+                        padding: 10,
+                    }
+                },
+                scales: {
+                    x: { ticks: { font: { family: 'Inter' } } },
+                    y: { ticks: { font: { family: 'Inter' } } }
+                }
+            };
+            
+            const wrapLabel = (label, maxLength = 16) => {
+                if (label.length <= maxLength) return label;
+                const words = label.split(' ');
+                const lines = [];
+                let currentLine = '';
+                words.forEach(word => {
+                    if ((currentLine + ' ' + word).trim().length > maxLength) {
+                        lines.push(currentLine.trim());
+                        currentLine = word;
+                    } else {
+                        currentLine = (currentLine + ' ' + word).trim();
+                    }
+                });
+                lines.push(currentLine.trim());
+                return lines;
+            };
+
+            let charts = {};
+
+            const createMaturityChart = () => {
+                if (charts.maturity) charts.maturity.destroy();
+                const ctx = document.getElementById('maturityChart').getContext('2d');
+                charts.maturity = new Chart(ctx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Madurez Actual', 'Brecha Digital'],
+                        datasets: [{ data: [41.7, 58.3], backgroundColor: ['#169fda', '#7a8389'], borderColor: '#f0f4f8', borderWidth: 4 }]
+                    },
+                    options: commonChartOptions
+                });
+            };
+
+            const createAiParadoxChart = () => {
+                if (charts.aiParadox) charts.aiParadox.destroy();
+                const ctx = document.getElementById('aiParadoxChart').getContext('2d');
+                charts.aiParadox = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Adopción de IA', 'Madurez en IA'],
+                        datasets: [{ data: [64, 1], backgroundColor: ['#169fda', '#7a8389'], barPercentage: 0.5 }]
+                    },
+                    options: { ...commonChartOptions, plugins: {...commonChartOptions.plugins, legend: { display: false } }, scales: { y: { beginAtZero: true, ticks: { callback: (value) => value + '%' } } } }
+                });
+            };
+            
+            const createChallengesChart = () => {
+                if (charts.challenges) charts.challenges.destroy();
+                const ctx = document.getElementById('challengesChart').getContext('2d');
+                charts.challenges = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Falta de Talento y Habilidades', 'Cultura y Resistencia al Cambio', 'Escasez de Recursos Financieros', 'Ciberseguridad y Riesgos'].map(l => wrapLabel(l, 25)),
+                        datasets: [{ data: [85, 75, 60, 50], backgroundColor: ['#169fda', '#7a8389', '#169fda', '#7a8389'] }]
+                    },
+                    options: { ...commonChartOptions, indexAxis: 'y', plugins: {...commonChartOptions.plugins, legend: { display: false }}, scales: { x: { beginAtZero: true } } }
+                });
+            };
+            
+            const createMarketGrowthChart = () => {
+                 if (charts.marketGrowth) charts.marketGrowth.destroy();
+                 const ctx = document.getElementById('marketGrowthChart').getContext('2d');
+                 charts.marketGrowth = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: ['2022', '2023', '2024', '2025'],
+                        datasets: [{ label: 'Mercado Cloud (Miles de Millones USD)', data: [3.5, 4.8, 5.9, 6.84], borderColor: '#169fda', borderWidth: 3, fill: true, backgroundColor: 'rgba(22, 159, 218, 0.2)', tension: 0.4 }]
+                    },
+                    options: { ...commonChartOptions, plugins: {...commonChartOptions.plugins, legend: { display: true } } }
+                 });
+            };
+
+            createMaturityChart();
+            createAiParadoxChart();
+            createChallengesChart();
+            createMarketGrowthChart();
+        });
+    </script>
+</body>
+</html>

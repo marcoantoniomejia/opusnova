@@ -1,0 +1,7 @@
+# Excluir archivos y directorios innecesarios de la imagen de Docker.
+
+.git
+.gitignore
+Dockerfile
+README.md
+node_modules
