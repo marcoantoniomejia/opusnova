@@ -30,7 +30,7 @@
     </script>
 
     <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
     <!-- Estilos -->
     <link rel="stylesheet" href="/css/main.css">
@@ -88,18 +88,22 @@
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fas fa-building"></i></div>
                         <div class="text-5xl font-black accent-text">99.8%</div>
                         <div class="mt-2 font-semibold">De las empresas en México son PyMEs</div>
                     </div>
                     <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fas fa-users"></i></div>
                         <div class="text-5xl font-black accent-text">72%</div>
                         <div class="mt-2 font-semibold">Del empleo nacional generado por PyMEs</div>
                     </div>
                     <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fas fa-cloud"></i></div>
                         <div class="text-5xl font-black accent-text">$6.8B</div>
                         <div class="mt-2 font-semibold">Mercado Cloud PyME (MX) Proyectado a 2025</div>
                     </div>
                     <div class="kpi-card">
+                        <div class="kpi-icon"><i class="fas fa-chart-line"></i></div>
                         <div class="text-5xl font-black accent-text">38%</div>
                         <div class="mt-2 font-semibold">Crecimiento Potencial en Ingresos con IA Madura</div>
                     </div>
@@ -188,7 +192,7 @@
             <div class="social-media">
                 <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
                 <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
-                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-x-twitter"></i></a>
                 <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
                 <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
             </div>
@@ -251,7 +255,7 @@
                     type: 'doughnut',
                     data: {
                         labels: ['Madurez Actual', 'Brecha Digital'],
-                        datasets: [{ data: [41.7, 58.3], backgroundColor: ['#169fda', '#7a8389'], borderColor: '#f0f4f8', borderWidth: 4 }]
+                        datasets: [{ data: [41.7, 58.3], backgroundColor: ['#2a9d8f', '#e9c46a'], borderColor: '#f0f4f8', borderWidth: 4 }]
                     },
                     options: commonChartOptions
                 });
@@ -264,7 +268,7 @@
                     type: 'bar',
                     data: {
                         labels: ['Adopción de IA', 'Madurez en IA'],
-                        datasets: [{ data: [64, 1], backgroundColor: ['#169fda', '#7a8389'], barPercentage: 0.5 }]
+                        datasets: [{ data: [64, 1], backgroundColor: ['#2a9d8f', '#e9c46a'], barPercentage: 0.5 }]
                     },
                     options: { ...commonChartOptions, plugins: {...commonChartOptions.plugins, legend: { display: false } }, scales: { y: { beginAtZero: true, ticks: { callback: (value) => value + '%' } } } }
                 });
@@ -277,7 +281,7 @@
                     type: 'bar',
                     data: {
                         labels: ['Falta de Talento y Habilidades', 'Cultura y Resistencia al Cambio', 'Escasez de Recursos Financieros', 'Ciberseguridad y Riesgos'].map(l => wrapLabel(l, 25)),
-                        datasets: [{ data: [85, 75, 60, 50], backgroundColor: ['#169fda', '#7a8389', '#169fda', '#7a8389'] }]
+                        datasets: [{ data: [85, 75, 60, 50], backgroundColor: ['#264653', '#2a9d8f', '#e9c46a', '#f4a261'] }]
                     },
                     options: { ...commonChartOptions, indexAxis: 'y', plugins: {...commonChartOptions.plugins, legend: { display: false }}, scales: { x: { beginAtZero: true } } }
                 });
@@ -290,7 +294,7 @@
                     type: 'line',
                     data: {
                         labels: ['2022', '2023', '2024', '2025'],
-                        datasets: [{ label: 'Mercado Cloud (Miles de Millones USD)', data: [3.5, 4.8, 5.9, 6.84], borderColor: '#169fda', borderWidth: 3, fill: true, backgroundColor: 'rgba(22, 159, 218, 0.2)', tension: 0.4 }]
+                        datasets: [{ label: 'Mercado Cloud (Miles de Millones USD)', data: [3.5, 4.8, 5.9, 6.84], borderColor: '#2a9d8f', borderWidth: 3, fill: true, backgroundColor: 'rgba(42, 157, 143, 0.2)', tension: 0.4 }]
                     },
                     options: { ...commonChartOptions, plugins: {...commonChartOptions.plugins, legend: { display: true } } }
                  });
