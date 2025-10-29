@@ -353,6 +353,83 @@ body {
     transition: color 0.3s ease;
 }
 
+
+.services-section__title {
+    text-align: center;
+}
+
 .social-icon:hover {
     color: white;
+}
+
+/* Responsive adjustments */
+
+/* For tablets and larger phones */
+@media (max-width: 768px) {
+    .contact-form-container {
+        grid-template-columns: 1fr; /* Stack the form and info */
+    }
+
+    .timeline {
+        flex-direction: column; /* Stack timeline items */
+        gap: 2rem;
+    }
+
+    .timeline-item {
+        width: 100%; /* Full width for timeline items */
+    }
+
+    .mission-vision-values-section .grid {
+        grid-template-columns: 1fr; /* Stack mission/vision/values */
+    }
+
+    .about-us-section__title {
+        font-size: 2rem;
+    }
+
+    .about-us-section__description {
+        font-size: 1rem;
+    }
+}
+
+/* For mobile phones */
+@media (max-width: 480px) {
+    .hero-section__title {
+        font-size: 2rem;
+    }
+
+    .hero-section__subtitle {
+        font-size: 1rem;
+    }
+
+    .kpi-card .text-5xl {
+        font-size: 2.5rem;
+    }
+
+    .grid {
+        gap: 1rem;
+    }
+
+    .lg\:grid-cols-4, .md\:grid-cols-2, .lg\:grid-cols-2, .lg\:grid-cols-5, .md\:grid-cols-3 {
+        grid-template-columns: 1fr;
+    }
+
+    .lg\:col-span-3, .lg\:col-span-2 {
+        grid-column: span 1 / span 1;
+    }
+}
+
+/* MD breakpoint from inline styles */
+@media (min-width: 768px) {
+    .md\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .md\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+/* LG breakpoint from inline styles */
+@media (min-width: 1024px) {
+    .lg\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .lg\:grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .lg\:grid-cols-5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+    .lg\:col-span-3 { grid-column: span 3 / span 3; }
+    .lg\:col-span-2 { grid-column: span 2 / span 2; }
 }
